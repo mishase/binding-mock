@@ -17,10 +17,10 @@
     "test": "mocha",
     "lint": "tsc && eslint lib/**/*.ts",
     "format": "eslint lib/**/*.ts --fix",
-    "clean": "rm -rf dist-ts dist",
-    "build": "npm run clean && tsc -p tsconfig-build.json && rollup -c && node -r esbuild-register bundle-types",
+    "build": "tsc -p tsconfig-build.json && rollup -c && node -r esbuild-register bundle-types",
     "prepublishOnly": "npm run build",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "prepare": "npm run build"
   },
   "keywords": [
     "serialport-binding",
@@ -52,7 +52,7 @@
     "spec": "lib/**/*-test.ts"
   },
   "dependencies": {
-    "@serialport/bindings-interface": "^1.2.1",
+    "@serialport/bindings-interface": "github:mishase/bindings-interface",
     "debug": "^4.3.3"
   }
 }
